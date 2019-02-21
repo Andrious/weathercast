@@ -21,11 +21,15 @@
 ///
 ///
 
-import 'package:mvc_application/controller.dart' show ControllerMVC;
+import 'package:flutter/material.dart';
+
+import 'package:mvc_application/controller.dart';
 
 import 'package:weathercast/src/app/model.dart' as mod show Weather;
 
-import 'package:weathercast/src/app/controller.dart' show WeatherCon, WeatherRepository;
+import 'package:weathercast/src/app/view.dart';
+
+import 'package:weathercast/src/app/controller.dart';
 
 class WeatherCon extends ControllerMVC {
   static WeatherCon _this;
@@ -48,7 +52,19 @@ class WeatherCon extends ControllerMVC {
   Future<mod.Weather> get future => Future.value(_weather);
 
   bool get error => _error;
-  bool _error;
+  bool _error = false;
+
+  void initState(){
+    initFetch();
+  }
+
+  /// Initially retrieve 'the last' city forecast.
+  Future<void> initFetch() async {
+    _city = Prefs.getString('city', null);
+    await fetchWeather(city: _city);
+    // Rebuild the Widget tree
+    rebuild();
+  }
 
   Future<mod.Weather> fetchWeather({String city}) async {
     if(city == null) return _weather;
@@ -57,17 +73,46 @@ class WeatherCon extends ControllerMVC {
     _error = false;
     try {
       _weather = await weatherRepository.getWeather(city);
+      Prefs.setString('city', _city);
     }catch(_){
       _error = true;
     }
     return _weather;
   }
 
+  /// Rebuild the Widget tree.
+  void rebuild(){
+    ThemeCon.weatherChanged(condition: weather?.condition).refresh();
+    refresh();
+  }
+
   Future<mod.Weather> refreshWeather({String city}) async {
     try {
       var weather = await weatherRepository.getWeather(city);
+      // If there's no error. Record the response.
       _weather = weather;
     } catch (_) {}
     return _weather;
+  }
+
+  Switcher settingsDrawer(BuildContext context) => Switcher(
+      temperatureUnits: Settings.temperatureUnits,
+      onChanged: (bool set) {
+        Settings.temperatureUnitsToggled();
+        WeatherCon().refresh();
+        Navigator.pop(context);
+      });
+
+  void onPressed(String city){
+    fetchWeather(city: city).then((weather) {
+      rebuild();
+    });
+  }
+
+  void onRefresh(){
+    refreshWeather(city: city)
+        .then((weather) {
+      rebuild();
+    });
   }
 }
