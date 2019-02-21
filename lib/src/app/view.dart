@@ -35,3 +35,5 @@ export 'package:weathercast/src/app/view/last_updated.dart';
 export 'package:weathercast/src/app/view/temperature.dart';
 
 export 'package:weathercast/src/app/view/utils/gradient_container.dart';
+
+export 'package:weathercast/src/app/view/settings_drawer.dart';
