@@ -25,12 +25,16 @@ import 'package:flutter/material.dart' show Colors, MaterialColor, ThemeData;
 
 import 'package:weathercast/src/app/model.dart' show WeatherCondition;
 
-import 'package:mvc_application/controller.dart' show ControllerMVC;
+import 'package:mvc_application/controller.dart' show AppController;
 
-class ThemeCon extends ControllerMVC {
+class ThemeCon extends AppController {
   static ThemeCon _this;
-  static ThemeData theme;
-  static MaterialColor color;
+
+  static ThemeData get theme => _theme;
+  static ThemeData _theme;
+
+  static MaterialColor get color => _color;
+  static MaterialColor _color;
 
   factory ThemeCon() {
     if (_this == null) _this = ThemeCon._();
@@ -43,44 +47,44 @@ class ThemeCon extends ControllerMVC {
     switch (condition) {
       case WeatherCondition.clear:
       case WeatherCondition.lightCloud:
-        theme = ThemeData(
+        _theme = ThemeData(
           primaryColor: Colors.orangeAccent,
         );
-        color = Colors.yellow;
+        _color = Colors.yellow;
         break;
       case WeatherCondition.hail:
       case WeatherCondition.snow:
       case WeatherCondition.sleet:
-        theme = ThemeData(
+        _theme = ThemeData(
           primaryColor: Colors.lightBlueAccent,
         );
-        color = Colors.lightBlue;
+        _color = Colors.lightBlue;
         break;
       case WeatherCondition.heavyCloud:
-        theme = ThemeData(
+        _theme = ThemeData(
           primaryColor: Colors.blueGrey,
         );
-        color = Colors.grey;
+        _color = Colors.grey;
 
         break;
       case WeatherCondition.heavyRain:
       case WeatherCondition.lightRain:
       case WeatherCondition.showers:
-        theme = ThemeData(
+        _theme = ThemeData(
           primaryColor: Colors.indigoAccent,
         );
-        color = Colors.indigo;
+        _color = Colors.indigo;
 
         break;
       case WeatherCondition.thunderstorm:
-        theme = ThemeData(
+        _theme = ThemeData(
           primaryColor: Colors.deepPurpleAccent,
         );
-        color = Colors.deepPurple;
+        _color = Colors.deepPurple;
         break;
       case WeatherCondition.unknown:
-        theme = ThemeData.light();
-        color = Colors.lightBlue;
+        _theme = ThemeData.light();
+        _color = Colors.lightBlue;
         break;
     }
     return _this;
