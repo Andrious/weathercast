@@ -31,3 +31,7 @@ export 'package:weathercast/src/app/controller/weather_repository.dart';
 
 export 'package:weathercast/src/app/controller/weather_conditions.dart';
 
+export 'package:weathercast/src/app/controller/weather_locations.dart';
+
+
+
