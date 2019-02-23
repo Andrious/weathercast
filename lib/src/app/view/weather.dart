@@ -17,7 +17,7 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-///          Created  13 Feb 2019
+///          Created  22 Feb 2019
 ///
 ///
 
@@ -32,30 +32,6 @@ import 'package:weathercast/src/app/model.dart' as model;
 import 'package:weathercast/src/app/view.dart';
 
 import 'package:weathercast/src/app/controller.dart';
-
-class WeatherApp extends AppState {
-  WeatherApp()
-      : super(
-            title: 'Flutter Demo',
-            con: ThemeCon(),
-            home: Weather());
-
-  @override
-  ThemeData onTheme() => ThemeCon.theme;
-}
-
-//class _WeatherAppState extends StateMVC<WeatherApp> {
-//  _WeatherAppState() : super(ThemeCon());
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return MaterialApp(
-//      title: 'Flutter Demo',
-//      theme: ThemeCon.theme,
-//      home: Weather(),
-//    );
-//  }
-//}
 
 class Weather extends StatefulWidget {
   Weather({Key key}) : super(key: key);
@@ -73,11 +49,6 @@ class _WeatherState extends StateMVC<Weather> {
 
   // Scaffold key
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +76,7 @@ class _WeatherState extends StateMVC<Weather> {
         ],
       ),
       body: Center(
-        child: BuildWidget(builder: (_) {
+        child: Builder(builder: (_) {
           if (_weatherCon.city == null || _weatherCon.city.isEmpty) {
             return Text('Please Select a Location');
           }
@@ -159,18 +130,6 @@ class _WeatherState extends StateMVC<Weather> {
   }
 }
 
-class BuildWidget extends StatefulWidget {
-  BuildWidget({@required this.builder, Key key}) : super(key: key);
-  final WidgetBuilder builder;
-  @override
-  State createState() => _WidgetBuilderState();
-}
-
-class _WidgetBuilderState extends State<BuildWidget> {
-  @override
-  Widget build(BuildContext context) => widget.builder(context);
-}
-
 class WeatherAppMenu {
   static State _state;
 
@@ -179,9 +138,9 @@ class WeatherAppMenu {
     return PopupMenuButton<String>(
       onSelected: _showMenuSelection,
       itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
-            PopupMenuItem<String>(value: 'Settings', child: Text('Settings')),
-            const PopupMenuItem<String>(value: 'About', child: Text('About')),
-          ],
+        PopupMenuItem<String>(value: 'Settings', child: Text('Settings')),
+        const PopupMenuItem<String>(value: 'About', child: Text('About')),
+      ],
     );
   }
 
@@ -229,3 +188,4 @@ class UnitsOfTemp {
             ]));
   }
 }
+

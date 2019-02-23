@@ -1,8 +1,6 @@
 ///
 /// Copyright (C) 2019 Andrious Solutions
 ///
-/// Original Contributor Felix Angelov of Skokie, Illinois
-///
 /// This program is free software; you can redistribute it and/or
 /// modify it under the terms of the GNU General Public License
 /// as published by the Free Software Foundation; either version 3
@@ -23,21 +21,21 @@
 ///
 ///
 
-import 'package:http/http.dart' show Client;
+import 'package:flutter/material.dart' show ThemeData;
 
-import 'package:weathercast/src/app/model.dart' show Weather, WeatherApiClient;
+import 'package:mvc_application/mvc.dart' show AppView;
 
+import 'package:weathercast/src/app/view.dart' show Weather;
 
-class WeatherRepository {
+import 'package:weathercast/src/app/controller.dart' as con;
 
-  final WeatherApiClient weatherApiClient = WeatherApiClient(
-    httpClient: Client(),
-  );
-
-  WeatherRepository();
-
-  Future<Weather> getWeather(String city) async {
-    final int locationId = await weatherApiClient.getLocationId(city);
-    return weatherApiClient.fetchWeather(locationId);
-  }
+class WeatherApp extends AppView {
+  WeatherApp()
+      : super(
+            title: 'Flutter Demo',
+            con: con.WeatherApp(),
+            home: Weather(),
+            debugPaintSizeEnabled: true);
+  @override
+  ThemeData onTheme() => con.ThemeCon.theme;
 }

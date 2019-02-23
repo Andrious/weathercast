@@ -23,8 +23,6 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:mvc_application/controller.dart';
-
 import 'package:weathercast/src/app/model.dart' as mod show Weather;
 
 import 'package:weathercast/src/app/view.dart';
@@ -60,7 +58,7 @@ class WeatherCon extends ControllerMVC {
 
   /// Initially retrieve 'the last' city forecast.
   Future<void> initFetch() async {
-    _city = Prefs.getString('city', null);
+    _city = Prefs.getString('city');
     await fetchWeather(city: _city);
     // Rebuild the Widget tree
     rebuild();
@@ -74,6 +72,7 @@ class WeatherCon extends ControllerMVC {
     try {
       _weather = await weatherRepository.getWeather(city);
       Prefs.setString('city', _city);
+      LocationCon.save(_city);
     }catch(_){
       _error = true;
     }

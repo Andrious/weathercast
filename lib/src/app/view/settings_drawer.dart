@@ -22,9 +22,9 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:weathercast/src/app/view.dart';
+import 'package:weathercast/src/app/view.dart' show StateMVC, TemperatureUnits;
 
-import 'package:weathercast/src/app/controller.dart';
+import 'package:weathercast/src/app/weather_locations/mvc.dart' as loc show LocationCon, DemoItem, weatherLocations;
 
 class SettingsDrawer extends StatefulWidget {
   SettingsDrawer({this.con, Key key}) : super(key: key);
@@ -33,12 +33,15 @@ class SettingsDrawer extends StatefulWidget {
   _SettingsDrawerState createState() => _SettingsDrawerState();
 }
 
-class _SettingsDrawerState extends State<SettingsDrawer> {
-  List<DemoItem<dynamic>> _demoItems;
+class _SettingsDrawerState extends StateMVC<SettingsDrawer> {
+  _SettingsDrawerState(): super(loc.LocationCon());
+  List<loc.DemoItem<dynamic>> _demoItems;
+  double _discreteValue = 20.0;
 
   @override
   void initState() {
     super.initState();
+    _demoItems = loc.LocationCon().listLocations(this);
   }
 
   @override
@@ -80,15 +83,25 @@ class _SettingsDrawerState extends State<SettingsDrawer> {
                         _demoItems[index].isExpanded = !isExpanded;
                       });
                     },
-                    children: _demoItems.map((DemoItem<dynamic> item) {
+                    children: _demoItems.map((loc.DemoItem<dynamic> item) {
                       return ExpansionPanel(
                           isExpanded: item.isExpanded,
                           headerBuilder: item.headerBuilder,
-                          body: item.build()
-                      );
-                    }).toList()
-                ),
+                          body: item.build());
+                    }).toList()),
               ),
+            ),
+            Slider(
+              value: _discreteValue,
+              min: 0.0,
+              max: 200.0,
+              divisions: 5,
+              label: '${_discreteValue.round()}',
+              onChanged: (double value) {
+                setState(() {
+                  _discreteValue = value;
+                });
+              },
             ),
           ]),
     );

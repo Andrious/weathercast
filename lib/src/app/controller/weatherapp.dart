@@ -1,8 +1,6 @@
 ///
 /// Copyright (C) 2019 Andrious Solutions
 ///
-/// Original Contributor Felix Angelov of Skokie, Illinois
-///
 /// This program is free software; you can redistribute it and/or
 /// modify it under the terms of the GNU General Public License
 /// as published by the Free Software Foundation; either version 3
@@ -19,25 +17,26 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-///          Created  13 Feb 2019
+///          Created  22 Feb 2019
 ///
 ///
 
-import 'package:http/http.dart' show Client;
 
-import 'package:weathercast/src/app/model.dart' show Weather, WeatherApiClient;
+import 'package:weathercast/src/app/controller.dart';
+
+import 'package:weathercast/src/app/weather_locations/mvc.dart' as loc;
 
 
-class WeatherRepository {
+class WeatherApp extends AppController {
+  WeatherApp(): super();
 
-  final WeatherApiClient weatherApiClient = WeatherApiClient(
-    httpClient: Client(),
-  );
+  @override
+  void initApp() => stateMVC.add(ThemeCon());
 
-  WeatherRepository();
-
-  Future<Weather> getWeather(String city) async {
-    final int locationId = await weatherApiClient.getLocationId(city);
-    return weatherApiClient.fetchWeather(locationId);
+  @override
+  Future<bool> init() async {
+    bool init = await super.init();
+    if(init) init = await loc.LocationCon().init();
+    return init;
   }
 }
