@@ -17,13 +17,28 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-///          Created  21 Feb 2019
+///          Created  14 Feb 2019
 ///
 ///
 
-export 'package:weathercast/src/app/weather_locations/model/weather_locations.dart';
+import 'package:weathercast/src/view.dart'
+    show TemperatureUnits;
 
-export 'package:weathercast/src/app/weather_locations/view/weather_locations.dart';
+class Settings {
+  factory Settings() {
+    if (_this == null) _this = Settings._();
+    return _this;
+  }
+  static Settings _this;
+  Settings._();
 
-export 'package:weathercast/src/app/weather_locations/controller/weather_locations.dart';
+  static TemperatureUnits _units = TemperatureUnits.celsius;
 
+  static TemperatureUnits get temperatureUnits => _units;
+
+  static temperatureUnitsToggled() {
+    _units = _units == TemperatureUnits.celsius
+        ? TemperatureUnits.fahrenheit
+        : TemperatureUnits.celsius;
+  }
+}

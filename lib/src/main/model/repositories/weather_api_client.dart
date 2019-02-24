@@ -30,7 +30,7 @@ import 'package:meta/meta.dart' show required;
 
 import 'package:http/http.dart' show Client;
 
-import 'package:weathercast/src/app/model.dart' show Weather;
+import 'package:weathercast/src/model.dart' show Weather;
 
 class WeatherApiClient {
   static const baseUrl = 'https://www.metaweather.com';

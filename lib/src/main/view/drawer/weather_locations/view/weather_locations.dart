@@ -25,11 +25,13 @@ import 'package:flutter/material.dart';
 
 import 'package:mvc_application/mvc.dart';
 
-import 'package:weathercast/src/app/weather_locations/mvc.dart';
+import 'package:weathercast/src/controller.dart' show LocationCon;
 
-enum _Location { Barbados, Bahamas, Bermuda }
+import 'package:weathercast/src/main/view/drawer/weather_locations/mvc.dart'
+    show LocationCon;
 
-List<DemoItem<dynamic>> weatherLocations(StateMVC state) {
+List<DemoItem<dynamic>> weatherLocations(
+    {StateMVC state, FormFieldSetter<String> onSaved}) {
   List<DemoItem<dynamic>> _demoItems = <DemoItem<dynamic>>[
     DemoItem<String>(
         name: 'Location',
@@ -42,6 +44,7 @@ List<DemoItem<dynamic>> weatherLocations(StateMVC state) {
               item.isExpanded = false;
             });
           }
+
           return Form(child: Builder(builder: (BuildContext context) {
             return CollapsibleBody(
               onSave: () {
@@ -56,22 +59,21 @@ List<DemoItem<dynamic>> weatherLocations(StateMVC state) {
                   initialValue: item.value,
                   onSaved: (String result) {
                     item.value = result;
+                    if (onSaved != null) onSaved(result);
                   },
                   builder: (FormFieldState<String> field) {
-                    return Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Flexible(
-                              flex: 1,
-                              fit: FlexFit.loose,
-                              child: ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: LocationCon.locations?.length ?? 0,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return LocationCon.option(index, field);
-                                  })),
-                        ]);
+                    return Column(mainAxisSize: MainAxisSize.min, children: <
+                        Widget>[
+                      Flexible(
+                          flex: 1,
+                          fit: FlexFit.loose,
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: LocationCon.locations?.length ?? 0,
+                              itemBuilder: (BuildContext context, int index) {
+                                return LocationCon.option(index, field);
+                              })),
+                    ]);
                   }),
             );
           }));

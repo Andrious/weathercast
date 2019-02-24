@@ -1,8 +1,6 @@
 ///
 /// Copyright (C) 2019 Andrious Solutions
 ///
-/// Original Contributor Felix Angelov of Skokie, Illinois
-///
 /// This program is free software; you can redistribute it and/or
 /// modify it under the terms of the GNU General Public License
 /// as published by the Free Software Foundation; either version 3
@@ -23,21 +21,23 @@
 ///
 ///
 
-import 'package:http/http.dart' show Client;
+export 'package:mvc_application/mvc.dart' show StateMVC;
 
-import 'package:weathercast/src/app/model.dart' show Weather, WeatherApiClient;
+export 'package:weathercast/src/app/view/weatherapp.dart';
 
+export 'package:weathercast/src/app/view/location.dart';
 
-class WeatherRepository {
+export 'package:weathercast/src/app/view/last_updated.dart';
 
-  final WeatherApiClient weatherApiClient = WeatherApiClient(
-    httpClient: Client(),
-  );
+export 'package:weathercast/src/app/view/utils/gradient_container.dart';
 
-  WeatherRepository();
+export 'package:weathercast/src/main/view/weather.dart';
 
-  Future<Weather> getWeather(String city) async {
-    final int locationId = await weatherApiClient.getLocationId(city);
-    return weatherApiClient.fetchWeather(locationId);
-  }
-}
+export 'package:weathercast/src/main/view/drawer/settings_drawer.dart';
+
+export 'package:weathercast/src/main/view/secondary/weather_temperature.dart';
+
+export 'package:weathercast/src/main/view/secondary/city_selection.dart';
+
+export 'package:weathercast/src/main/view/secondary/temperature.dart';
+

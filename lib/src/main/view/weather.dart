@@ -27,11 +27,11 @@ import 'package:flutter/material.dart';
 
 import 'package:mvc_application/mvc.dart';
 
-import 'package:weathercast/src/app/model.dart' as model;
+import 'package:weathercast/src/model.dart' as model;
 
-import 'package:weathercast/src/app/view.dart';
+import 'package:weathercast/src/view.dart';
 
-import 'package:weathercast/src/app/controller.dart';
+import 'package:weathercast/src/controller.dart';
 
 class Weather extends StatefulWidget {
   Weather({Key key}) : super(key: key);

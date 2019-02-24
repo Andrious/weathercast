@@ -28,7 +28,7 @@ import 'package:flutter/material.dart' show BuildContext, Image, Key, StatelessW
 
 import 'package:meta/meta.dart' show required;
 
-import 'package:weathercast/src/app/model.dart' show WeatherCondition;
+import 'package:weathercast/src/model.dart' show WeatherCondition;
 
 class WeatherConditions extends StatelessWidget {
   final WeatherCondition condition;

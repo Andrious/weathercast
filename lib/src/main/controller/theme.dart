@@ -23,9 +23,9 @@
 
 import 'package:flutter/material.dart' show Colors, MaterialColor, ThemeData;
 
-import 'package:weathercast/src/app/model.dart' show WeatherCondition;
+import 'package:weathercast/src/model.dart' show WeatherCondition;
 
-import 'package:weathercast/src/app/controller.dart' show AppController;
+import 'package:weathercast/src/controller.dart' show AppController;
 
 class ThemeCon extends AppController {
   static ThemeCon _this;

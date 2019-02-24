@@ -21,22 +21,25 @@
 ///
 ///
 
+import 'package:weathercast/src/controller.dart'
+    show AppController, LocationCon, LocationTimer, ThemeCon;
 
-import 'package:weathercast/src/app/controller.dart';
-
-import 'package:weathercast/src/app/weather_locations/mvc.dart' as loc;
-
+import 'package:weathercast/src/main/view/drawer/weather_locations/mvc.dart'
+    show LocationCon, LocationTimer;
 
 class WeatherApp extends AppController {
-  WeatherApp(): super();
+  WeatherApp() : super();
 
   @override
-  void initApp() => stateMVC.add(ThemeCon());
+  void initApp() {
+    stateMVC.add(ThemeCon());
+  }
 
   @override
   Future<bool> init() async {
     bool init = await super.init();
-    if(init) init = await loc.LocationCon().init();
+    if (init) init = await LocationCon().init();
+    if (init) init = await LocationTimer.init();
     return init;
   }
 }

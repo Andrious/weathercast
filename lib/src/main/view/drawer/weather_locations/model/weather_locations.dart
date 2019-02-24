@@ -43,6 +43,7 @@ class LocationMod extends DBInterface {
   get version => 1;
 
   static const String tableName = 'Locations';
+  static List<String> _locations = [];
 
   @override
   Future onCreate(Database db, int version) async {
@@ -59,52 +60,36 @@ class LocationMod extends DBInterface {
 
   static void dispose() => LocationMod().disposed();
 
-  static Future<List<Location>> getLocations() async {
-    return Location.listLocations(await LocationMod()
-        .rawQuery('SELECT * FROM $tableName WHERE deleted = 0'));
+  static Future<List<String>> getLocations() async {
+    List<Map<String, dynamic>> locations;
+
+    try {
+      locations = await LocationMod()
+        .rawQuery('SELECT * FROM $tableName WHERE deleted = 0');
+    }catch(ex){
+      locations = [];
+    }
+    for(Map location in locations){
+      _locations.add(location['city']);
+    }
+    return _locations;
   }
 
   static String get city => _city;
   static String _city = Prefs.getString('city', 'Chicago');
 
   static Future<bool> saveLocation({String city}) async {
-    bool saved = false;
-    if (city == null || city.isEmpty)
-      int index = lst.firstWhere(test);
-    if (index >= 0) result = lst[index];
+    bool saved = true;
+    if (city == null || city.isEmpty) return saved;
+    _city = city;
+    if (!_locations.contains(city)) {
       saved = await LocationMod().saveMap(tableName, {'city': city});
+      if (saved) _locations.add(city);
+    }
     return saved;
   }
 
   Future onConfigure(Database db) {
     return db.execute("PRAGMA foreign_keys=ON;");
-  }
-}
-
-class Location<E> implements Comparable<Location> {
-  Location.fromMap(Map m) {
-    city = m["city"];
-  }
-
-  Map get toMap => {"city": _city};
-
-  String get city => _city;
-  set city(String value) {
-    if (value == null) value = "";
-    _city = value.trim();
-  }
-
-  String _city;
-
-  int compareTo(Location other) => _city.compareTo(other._city);
-
-  static Future<List<Location>> listLocations(
-      List<Map<String, dynamic>> query) async {
-    List<Location> locationList = [];
-    for (Map city in query) {
-      Location location = Location.fromMap(city);
-      locationList.add(location);
-    }
-    return locationList;
   }
 }

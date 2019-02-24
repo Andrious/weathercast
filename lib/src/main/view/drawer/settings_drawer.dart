@@ -22,9 +22,12 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:weathercast/src/app/view.dart' show StateMVC, TemperatureUnits;
+import 'package:weathercast/src/view.dart' show StateMVC, TemperatureUnits;
 
-import 'package:weathercast/src/app/weather_locations/mvc.dart' as loc show LocationCon, DemoItem, weatherLocations;
+import 'package:weathercast/src/controller.dart';
+
+import 'package:weathercast/src/main/view/drawer/weather_locations/mvc.dart'
+    as loc show LocationCon, DemoItem;
 
 class SettingsDrawer extends StatefulWidget {
   SettingsDrawer({this.con, Key key}) : super(key: key);
@@ -34,14 +37,26 @@ class SettingsDrawer extends StatefulWidget {
 }
 
 class _SettingsDrawerState extends StateMVC<SettingsDrawer> {
-  _SettingsDrawerState(): super(loc.LocationCon());
+  _SettingsDrawerState() : super(loc.LocationCon());
   List<loc.DemoItem<dynamic>> _demoItems;
-  double _discreteValue = 20.0;
+  double _discreteValue = LocationTimer.intervals.toDouble();
 
   @override
   void initState() {
     super.initState();
-    _demoItems = loc.LocationCon().listLocations(this);
+    LocationTimer.initState();
+    _demoItems = loc.LocationCon().listLocations(
+        state: this,
+        onSaved: (String v) {
+          WeatherCon().getWeather(v);
+          Navigator.pop(context);
+        });
+  }
+
+  @override
+  void dispose() {
+    LocationTimer.dispose();
+    super.dispose();
   }
 
   @override
@@ -64,6 +79,7 @@ class _SettingsDrawerState extends StateMVC<SettingsDrawer> {
                 color: Colors.blue,
               ),
             ),
+            Text(unitLabel),
             ListTile(
               title: const Text('Temperature Untis'),
               subtitle: Text(subTitle),
@@ -93,13 +109,14 @@ class _SettingsDrawerState extends StateMVC<SettingsDrawer> {
             ),
             Slider(
               value: _discreteValue,
-              min: 0.0,
-              max: 200.0,
-              divisions: 5,
+              min: 2.0,
+              max: 10.0,
+              divisions: 1,
               label: '${_discreteValue.round()}',
               onChanged: (double value) {
                 setState(() {
                   _discreteValue = value;
+                  Navigator.pop(context);
                 });
               },
             ),

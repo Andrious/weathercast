@@ -23,11 +23,11 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:weathercast/src/app/model.dart' as mod show Weather;
+import 'package:weathercast/src/model.dart' as mod show Weather;
 
-import 'package:weathercast/src/app/view.dart';
+import 'package:weathercast/src/view.dart';
 
-import 'package:weathercast/src/app/controller.dart';
+import 'package:weathercast/src/controller.dart';
 
 class WeatherCon extends ControllerMVC {
   static WeatherCon _this;
@@ -52,20 +52,17 @@ class WeatherCon extends ControllerMVC {
   bool get error => _error;
   bool _error = false;
 
-  void initState(){
-    initFetch();
-  }
+  @override
+  void initState() => initFetch();
 
   /// Initially retrieve 'the last' city forecast.
   Future<void> initFetch() async {
     _city = Prefs.getString('city');
-    await fetchWeather(city: _city);
-    // Rebuild the Widget tree
-    rebuild();
+    await getWeather(_city);
   }
 
   Future<mod.Weather> fetchWeather({String city}) async {
-    if(city == null) return _weather;
+    if (city == null) return _weather;
     _city = city;
     _weather = null;
     _error = false;
@@ -73,14 +70,17 @@ class WeatherCon extends ControllerMVC {
       _weather = await weatherRepository.getWeather(city);
       Prefs.setString('city', _city);
       LocationCon.save(_city);
-    }catch(_){
+    } catch (_) {
       _error = true;
     }
     return _weather;
   }
 
+  Future<void> getWeather(String city) =>
+      fetchWeather(city: city).then((weather) => rebuild());
+
   /// Rebuild the Widget tree.
-  void rebuild(){
+  void rebuild() {
     ThemeCon.weatherChanged(condition: weather?.condition).refresh();
     refresh();
   }
@@ -102,16 +102,15 @@ class WeatherCon extends ControllerMVC {
         Navigator.pop(context);
       });
 
-  void onPressed(String city){
-    fetchWeather(city: city).then((weather) {
+  void onPressed(String city) => getWeather(city);
+
+  void onRefresh() {
+    refreshWeather(city: city).then((weather) {
       rebuild();
     });
   }
 
-  void onRefresh(){
-    refreshWeather(city: city)
-        .then((weather) {
-      rebuild();
-    });
+  void weatherInterval({int seconds}){
+    LocationTimer.setTimer(seconds: seconds);
   }
 }

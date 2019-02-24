@@ -7,10 +7,10 @@
 ##                       ThemeCon extends AppController {
 ##                       settings_drawer.dart
 ##                       runApp(MVC(WeatherApp()));
-## [0.3.0] - 2019-02-24: 
+## [0.3.0] - 2019-02-23: 
 ##                       class WeatherApp extends AppController {
 ##                       class LocationCon extends ControllerMVC {
-##                       
+## [0.4.0] - 2019-02-24: class LocationTimer { Future<void> getWeather(String city)                     
 ##                       
 ##                       
 ##                       

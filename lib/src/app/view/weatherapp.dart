@@ -25,9 +25,9 @@ import 'package:flutter/material.dart' show ThemeData;
 
 import 'package:mvc_application/mvc.dart' show AppView;
 
-import 'package:weathercast/src/app/view.dart' show Weather;
+import 'package:weathercast/src/view.dart' show Weather;
 
-import 'package:weathercast/src/app/controller.dart' as con;
+import 'package:weathercast/src/controller.dart' as con;
 
 class WeatherApp extends AppView {
   WeatherApp()

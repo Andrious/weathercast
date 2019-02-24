@@ -17,26 +17,13 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-///          Created  13 Feb 2019
+///          Created  21 Feb 2019
 ///
 ///
 
-export 'package:mvc_application/mvc.dart' show StateMVC;
+export 'package:weathercast/src/main/view/drawer/weather_locations/model/weather_locations.dart';
 
-export 'package:weathercast/src/app/view/weatherapp.dart';
+export 'package:weathercast/src/main/view/drawer/weather_locations/view/weather_locations.dart';
 
-export 'package:weathercast/src/app/view/weather.dart';
+export 'package:weathercast/src/main/view/drawer/weather_locations/controller/weather_locations.dart';
 
-export 'package:weathercast/src/app/view/weather_temperature.dart';
-
-export 'package:weathercast/src/app/view/city_selection.dart';
-
-export 'package:weathercast/src/app/view/location.dart';
-
-export 'package:weathercast/src/app/view/last_updated.dart';
-
-export 'package:weathercast/src/app/view/temperature.dart';
-
-export 'package:weathercast/src/app/view/utils/gradient_container.dart';
-
-export 'package:weathercast/src/app/view/settings_drawer.dart';

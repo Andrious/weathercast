@@ -41,11 +41,11 @@ import 'package:flutter/material.dart'
 
 import 'package:meta/meta.dart' show required;
 
-import 'package:weathercast/src/app/model.dart' show Weather;
+import 'package:weathercast/src/model.dart' show Weather;
 
-import 'package:weathercast/src/app/view.dart' show Temperature;
+import 'package:weathercast/src/view.dart' show Temperature;
 
-import 'package:weathercast/src/app/controller.dart'
+import 'package:weathercast/src/controller.dart'
     show Settings, WeatherConditions;
 
 class WeatherTemperature extends StatelessWidget {
