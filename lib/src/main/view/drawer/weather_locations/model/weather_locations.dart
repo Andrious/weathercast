@@ -62,14 +62,8 @@ class LocationMod extends DBInterface {
 
   static Future<List<String>> getLocations() async {
     List<Map<String, dynamic>> locations;
-
-    try {
-      locations = await LocationMod()
-        .rawQuery('SELECT * FROM $tableName WHERE deleted = 0');
-    }catch(ex){
-      locations = [];
-    }
-    for(Map location in locations){
+    locations = await getRecs();
+    for (Map location in locations) {
       _locations.add(location['city']);
     }
     return _locations;
@@ -89,7 +83,61 @@ class LocationMod extends DBInterface {
     return saved;
   }
 
+  static Future<List<Map<String, dynamic>>> getRecs() async {
+    List<Map<String, dynamic>> recs;
+
+    try {
+      recs = await LocationMod()
+          .rawQuery('SELECT * FROM $tableName WHERE deleted = 0');
+    } catch (ex) {
+      recs = [];
+    }
+    return recs;
+  }
+
+  static Future<bool> deleteRec(String city) async {
+    List<Map<String, dynamic>> recs = await getRecs();
+    int id = -1;
+    for (Map<String, dynamic> rec in recs) {
+      if (rec['city'] == city) {
+        id = rec['id'];
+        break;
+      }
+    }
+    bool delete = id > -1;
+    if(delete) delete = await LocationMod().delete(tableName, id) > 0;
+    return delete;
+  }
+
   Future onConfigure(Database db) {
     return db.execute("PRAGMA foreign_keys=ON;");
+  }
+}
+
+class Location<E> implements Comparable<Location> {
+  Location.fromMap(Map m) {
+    city = m["city"];
+  }
+
+  Map get toMap => {"city": _city};
+
+  String get city => _city;
+  set city(String value) {
+    if (value == null) value = "";
+    _city = value.trim();
+  }
+
+  String _city;
+
+  int compareTo(Location other) => _city.compareTo(other._city);
+
+  static Future<List<Location>> listLocations(
+      List<Map<String, dynamic>> query) async {
+    List<Location> locationList = [];
+    for (Map city in query) {
+      Location location = Location.fromMap(city);
+      locationList.add(location);
+    }
+    return locationList;
   }
 }

@@ -21,11 +21,9 @@
 ///
 ///
 
-import 'package:weathercast/src/controller.dart'
-    show AppController, LocationCon, LocationTimer, ThemeCon;
+import 'package:weathercast/src/controller.dart';
 
-import 'package:weathercast/src/main/view/drawer/weather_locations/mvc.dart'
-    show LocationCon, LocationTimer;
+import 'package:weathercast/src/main/view/drawer/weather_locations/mvc.dart';
 
 class WeatherApp extends AppController {
   WeatherApp() : super();
@@ -41,5 +39,11 @@ class WeatherApp extends AppController {
     if (init) init = await LocationCon().init();
     if (init) init = await LocationTimer.init();
     return init;
+  }
+
+  void dispose() {
+    /// Close the Location database.
+    LocationMod.dispose();
+    super.dispose();
   }
 }

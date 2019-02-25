@@ -25,7 +25,7 @@ export 'package:mvc_application/controller.dart';
 
 export 'package:weathercast/src/app/controller/weatherapp.dart';
 
-export 'package:weathercast/src/main/controller/weather.dart';
+export 'package:weathercast/src/main/controller/main.dart';
 
 export 'package:weathercast/src/main/controller/theme.dart';
 

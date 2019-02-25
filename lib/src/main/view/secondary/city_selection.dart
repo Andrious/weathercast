@@ -43,6 +43,8 @@ import 'package:flutter/material.dart'
         TextFormField,
         Widget;
 
+import 'package:weathercast/src/main/view/drawer/weather_locations/mvc.dart' show LocationTimer;
+
 class CitySelection extends StatefulWidget {
   @override
   State<CitySelection> createState() => _CitySelectionState();
@@ -50,6 +52,18 @@ class CitySelection extends StatefulWidget {
 
 class _CitySelectionState extends State<CitySelection> {
   final TextEditingController _textController = TextEditingController();
+
+  @override
+  void initState(){
+    super.initState();
+    LocationTimer.initState();
+  }
+
+  @override
+  void dispose(){
+    LocationTimer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -79,7 +79,6 @@ class _SettingsDrawerState extends StateMVC<SettingsDrawer> {
                 color: Colors.blue,
               ),
             ),
-            Text(unitLabel),
             ListTile(
               title: const Text('Temperature Untis'),
               subtitle: Text(subTitle),

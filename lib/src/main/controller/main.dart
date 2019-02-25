@@ -33,7 +33,9 @@ class WeatherCon extends ControllerMVC {
   static WeatherCon _this;
 
   factory WeatherCon() {
-    if (_this == null) _this = WeatherCon._();
+    if (_this == null) {
+      _this = WeatherCon._();
+    }
 
     return _this;
   }
@@ -61,6 +63,7 @@ class WeatherCon extends ControllerMVC {
     await getWeather(_city);
   }
 
+  /// Fetch the data from the database.
   Future<mod.Weather> fetchWeather({String city}) async {
     if (city == null) return _weather;
     _city = city;
@@ -69,7 +72,7 @@ class WeatherCon extends ControllerMVC {
     try {
       _weather = await weatherRepository.getWeather(city);
       Prefs.setString('city', _city);
-      LocationCon.save(_city);
+      LocationCon().save(_city);
     } catch (_) {
       _error = true;
     }
@@ -102,6 +105,7 @@ class WeatherCon extends ControllerMVC {
         Navigator.pop(context);
       });
 
+  /// Called by the View's onPressed() function.
   void onPressed(String city) => getWeather(city);
 
   void onRefresh() {
@@ -110,7 +114,7 @@ class WeatherCon extends ControllerMVC {
     });
   }
 
-  void weatherInterval({int seconds}){
+  void weatherInterval({int seconds}) {
     LocationTimer.setTimer(seconds: seconds);
   }
 }

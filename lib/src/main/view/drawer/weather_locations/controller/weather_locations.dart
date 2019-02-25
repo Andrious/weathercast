@@ -64,12 +64,6 @@ class LocationCon extends ControllerMVC {
     return init;
   }
 
-  void dispose() {
-    /// Close the Location database.
-    LocationMod.dispose();
-    super.dispose();
-  }
-
   /// Return a list of locations.
   List<DemoItem<dynamic>> listLocations(
           {StateMVC state, FormFieldSetter<String> onSaved}) =>
@@ -85,19 +79,29 @@ class LocationCon extends ControllerMVC {
   /// Returns a row representing one particular location.
   static Row option(int index, FormFieldState<String> field) {
     String location = _locations?.elementAt(index);
-    return Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+    return
+      Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
       Radio<String>(
         value: location,
         groupValue: field.value,
         onChanged: field.didChange,
       ),
       Text(location),
+      FlatButton(
+        onPressed: (){LocationCon().delete(location);},
+        child: Icon(Icons.clear, color: Colors.grey),
+      ),
     ]);
   }
 
-  /// Save the specified location.
-  static Future<bool> save(String value) =>
-      LocationMod.saveLocation(city: value);
+  /// Save the specified location to the database.
+  Future<bool> save(String value) => LocationMod.saveLocation(city: value);
+
+  Future<bool> delete(String value) async {
+    bool delete = await LocationMod.deleteRec(value);
+    refresh();
+    return delete;
+  }
 }
 
 typedef TimerCallback = void Function(Timer timer);
