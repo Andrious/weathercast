@@ -26,7 +26,7 @@ import 'package:weathercast/src/view.dart' show StateMVC, TemperatureUnits;
 
 import 'package:weathercast/src/controller.dart';
 
-import 'package:weathercast/src/main/view/drawer/weather_locations/mvc.dart'
+import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart'
     as loc show LocationCon, DemoItem;
 
 class SettingsDrawer extends StatefulWidget {

@@ -29,15 +29,15 @@ export 'package:weathercast/src/app/view/location.dart';
 
 export 'package:weathercast/src/app/view/utils/gradient_container.dart';
 
-export 'package:weathercast/src/main/view/main.dart';
+export 'package:weathercast/src/home/view/main.dart';
 
-export 'package:weathercast/src/main/view/drawer/settings_drawer.dart';
+export 'package:weathercast/src/home/view/drawer/settings_drawer.dart';
 
-export 'package:weathercast/src/main/view/secondary/last_updated.dart';
+export 'package:weathercast/src/home/view/secondary/last_updated.dart';
 
-export 'package:weathercast/src/main/view/secondary/weather_temperature.dart';
+export 'package:weathercast/src/home/view/secondary/weather_temperature.dart';
 
-export 'package:weathercast/src/main/view/secondary/city_selection.dart';
+export 'package:weathercast/src/home/view/secondary/city_selection.dart';
 
-export 'package:weathercast/src/main/view/secondary/temperature.dart';
+export 'package:weathercast/src/home/view/secondary/temperature.dart';
 

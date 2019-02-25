@@ -25,17 +25,17 @@ export 'package:mvc_application/controller.dart';
 
 export 'package:weathercast/src/app/controller/weatherapp.dart';
 
-export 'package:weathercast/src/main/controller/main.dart';
+export 'package:weathercast/src/home/controller/main.dart';
 
-export 'package:weathercast/src/main/controller/theme.dart';
+export 'package:weathercast/src/home/controller/theme.dart';
 
-export 'package:weathercast/src/main/controller/settings.dart';
+export 'package:weathercast/src/home/controller/settings.dart';
 
-export 'package:weathercast/src/main/controller/weather_repository.dart';
+export 'package:weathercast/src/home/controller/weather_repository.dart';
 
-export 'package:weathercast/src/main/controller/weather_conditions.dart';
+export 'package:weathercast/src/home/controller/weather_conditions.dart';
 
-export 'package:weathercast/src/main/view/drawer/weather_locations/controller/weather_locations.dart';
+export 'package:weathercast/src/home/view/drawer/weather_locations/controller/weather_locations.dart';
 
 
 

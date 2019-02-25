@@ -21,9 +21,9 @@
 ///
 ///
 
-export 'package:weathercast/src/main/view/drawer/weather_locations/model/weather_locations.dart';
+export 'package:weathercast/src/home/view/drawer/weather_locations/model/weather_locations.dart';
 
-export 'package:weathercast/src/main/view/drawer/weather_locations/view/weather_locations.dart';
+export 'package:weathercast/src/home/view/drawer/weather_locations/view/weather_locations.dart';
 
-export 'package:weathercast/src/main/view/drawer/weather_locations/controller/weather_locations.dart';
+export 'package:weathercast/src/home/view/drawer/weather_locations/controller/weather_locations.dart';
 

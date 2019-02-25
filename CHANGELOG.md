@@ -14,4 +14,5 @@
 ## [0.5.0] - 2019-02-25: main directory                    
 ## [0.5.1] - 2019-02-25: andrioussolutions.png
 ## [0.5.2] - 2019-02-25: url: git://github.com/AndriousSolutions/mvc_application.git
-##                       
+## [0.5.3] - 2019-02-25: main directory renamed home
+##

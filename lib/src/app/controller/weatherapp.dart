@@ -23,7 +23,7 @@
 
 import 'package:weathercast/src/controller.dart';
 
-import 'package:weathercast/src/main/view/drawer/weather_locations/mvc.dart';
+import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart';
 
 class WeatherApp extends AppController {
   WeatherApp() : super();

@@ -43,7 +43,7 @@ import 'package:flutter/material.dart'
         TextFormField,
         Widget;
 
-import 'package:weathercast/src/main/view/drawer/weather_locations/mvc.dart' show LocationTimer;
+import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart' show LocationTimer;
 
 class CitySelection extends StatefulWidget {
   @override
