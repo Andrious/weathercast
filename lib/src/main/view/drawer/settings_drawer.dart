@@ -108,9 +108,9 @@ class _SettingsDrawerState extends StateMVC<SettingsDrawer> {
             ),
             Slider(
               value: _discreteValue,
-              min: 2.0,
+              min: 0.0,
               max: 10.0,
-              divisions: 1,
+              divisions: 2,
               label: '${_discreteValue.round()}',
               onChanged: (double value) {
                 setState(() {
