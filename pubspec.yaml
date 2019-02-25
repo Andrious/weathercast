@@ -1,7 +1,7 @@
 name: weathercast
 description: A simple Weather App demonstrating Flutter
 
-version: 0.5.1
+version: 0.5.4
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"

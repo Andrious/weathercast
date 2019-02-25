@@ -25,13 +25,23 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:mvc_application/mvc.dart';
+import 'package:mvc_application/mvc.dart' show StateMVC;
 
 import 'package:weathercast/src/model.dart' as model;
 
-import 'package:weathercast/src/view.dart';
+import 'package:weathercast/src/view.dart'
+    show
+        CitySelection,
+        GradientContainer,
+        LastUpdated,
+        Location,
+        SettingsDrawer,
+        StateMVC,
+        TemperatureUnits,
+        WeatherTemperature;
 
-import 'package:weathercast/src/controller.dart';
+import 'package:weathercast/src/controller.dart'
+    show Settings, ThemeCon, WeatherCon;
 
 class Weather extends StatefulWidget {
   Weather({Key key}) : super(key: key);
@@ -138,9 +148,9 @@ class WeatherAppMenu {
     return PopupMenuButton<String>(
       onSelected: _showMenuSelection,
       itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
-        PopupMenuItem<String>(value: 'Settings', child: Text('Settings')),
-        const PopupMenuItem<String>(value: 'About', child: Text('About')),
-      ],
+            PopupMenuItem<String>(value: 'Settings', child: Text('Settings')),
+            const PopupMenuItem<String>(value: 'About', child: Text('About')),
+          ],
     );
   }
 
@@ -188,4 +198,3 @@ class UnitsOfTemp {
             ]));
   }
 }
-
