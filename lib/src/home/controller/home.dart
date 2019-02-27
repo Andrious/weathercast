@@ -23,11 +23,12 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:weathercast/src/model.dart' as mod show Weather;
+import 'package:weathercast/src/model.dart' show Weather;
 
-import 'package:weathercast/src/view.dart';
+import 'package:weathercast/src/view.dart' show Switcher;
 
-import 'package:weathercast/src/controller.dart';
+import 'package:weathercast/src/controller.dart'
+    show ControllerMVC, LocationCon, LocationTimer, Prefs, Settings, ThemeCon, WeatherRepository;
 
 class WeatherCon extends ControllerMVC {
   static WeatherCon _this;
@@ -46,10 +47,10 @@ class WeatherCon extends ControllerMVC {
   String get city => _city;
   String _city;
 
-  mod.Weather get weather => _weather;
-  mod.Weather _weather;
+  Weather get weather => _weather;
+  Weather _weather;
 
-  Future<mod.Weather> get future => Future.value(_weather);
+  Future<Weather> get future => Future.value(_weather);
 
   bool get error => _error;
   bool _error = false;
@@ -64,7 +65,7 @@ class WeatherCon extends ControllerMVC {
   }
 
   /// Fetch the data from the database.
-  Future<mod.Weather> fetchWeather({String city}) async {
+  Future<Weather> fetchWeather({String city}) async {
     if (city == null) return _weather;
     _city = city;
     _weather = null;
@@ -88,7 +89,7 @@ class WeatherCon extends ControllerMVC {
     refresh();
   }
 
-  Future<mod.Weather> refreshWeather({String city}) async {
+  Future<Weather> refreshWeather({String city}) async {
     try {
       var weather = await weatherRepository.getWeather(city);
       // If there's no error. Record the response.
