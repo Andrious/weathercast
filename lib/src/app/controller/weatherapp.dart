@@ -26,7 +26,14 @@ import 'package:weathercast/src/controller.dart';
 import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart';
 
 class WeatherApp extends AppController {
-  WeatherApp() : super();
+
+  factory WeatherApp(){
+    if(_this == null) _this = WeatherApp._();
+    return _this;
+  }
+  static WeatherApp _this;
+
+  WeatherApp._() : super();
 
   @override
   void initApp() {
@@ -47,3 +54,5 @@ class WeatherApp extends AppController {
     super.dispose();
   }
 }
+
+

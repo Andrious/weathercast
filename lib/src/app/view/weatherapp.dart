@@ -30,12 +30,20 @@ import 'package:weathercast/src/view.dart' show Weather;
 import 'package:weathercast/src/controller.dart' as con;
 
 class WeatherApp extends AppView {
-  WeatherApp()
+
+  factory WeatherApp(){
+    if(_this == null) _this = WeatherApp._();
+    return _this;
+  }
+  static WeatherApp _this;
+
+  WeatherApp._()
       : super(
             title: 'Flutter Demo',
             con: con.WeatherApp(),
             home: Weather(),
-            debugPaintSizeEnabled: true);
+            );
   @override
   ThemeData onTheme() => con.ThemeCon.theme;
 }
+
