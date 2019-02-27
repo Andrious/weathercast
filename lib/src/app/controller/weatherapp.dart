@@ -21,14 +21,15 @@
 ///
 ///
 
-import 'package:weathercast/src/controller.dart';
+import 'package:weathercast/src/controller.dart'
+    show AppController, ThemeCon;
 
-import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart';
+import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart'
+    show LocationCon, LocationMod, LocationTimer;
 
 class WeatherApp extends AppController {
-
-  factory WeatherApp(){
-    if(_this == null) _this = WeatherApp._();
+  factory WeatherApp() {
+    if (_this == null) _this = WeatherApp._();
     return _this;
   }
   static WeatherApp _this;
@@ -54,5 +55,3 @@ class WeatherApp extends AppController {
     super.dispose();
   }
 }
-
-
