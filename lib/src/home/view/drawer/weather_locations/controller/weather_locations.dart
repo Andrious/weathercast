@@ -21,17 +21,17 @@
 ///
 ///
 
-import 'dart:core';
+import 'dart:core' show Duration, Future, List, String, bool, dynamic, int;
 
 import 'dart:async' show Future, Timer;
 
 import 'package:flutter/material.dart';
 
-import 'package:mvc_application/mvc.dart';
+import 'package:mvc_application/mvc.dart' show ControllerMVC, Prefs, StateMVC;
 
-import 'package:weathercast/src/controller.dart';
+import 'package:weathercast/src/controller.dart' show ControllerMVC, Prefs, WeatherCon;
 
-import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart';
+import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart' show DemoItem, LocationMod, weatherLocations;
 
 /// Weather forecast locations controller.
 class LocationCon extends ControllerMVC {
