@@ -21,7 +21,7 @@
 ///
 ///
 
-import 'dart:async';
+import 'dart:async' show Completer, Future;
 
 import 'package:flutter/material.dart';
 
