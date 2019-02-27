@@ -21,17 +21,20 @@
 ///
 ///
 
-import 'dart:core' show Duration, Future, List, String, bool, dynamic, int;
+import 'dart:core'
+    show Duration, Future, List, String, bool, dynamic, int;
 
 import 'dart:async' show Future, Timer;
 
 import 'package:flutter/material.dart';
 
-import 'package:mvc_application/mvc.dart' show ControllerMVC, Prefs, StateMVC;
+import 'package:mvc_application/mvc.dart' show StateMVC;
 
-import 'package:weathercast/src/controller.dart' show ControllerMVC, Prefs, WeatherCon;
+import 'package:weathercast/src/controller.dart'
+    show ControllerMVC, Prefs, WeatherCon;
 
-import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart' show DemoItem, LocationMod, weatherLocations;
+import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart'
+    show DemoItem, LocationMod, weatherLocations;
 
 /// Weather forecast locations controller.
 class LocationCon extends ControllerMVC {
@@ -79,8 +82,7 @@ class LocationCon extends ControllerMVC {
   /// Returns a row representing one particular location.
   static Row option(int index, FormFieldState<String> field) {
     String location = _locations?.elementAt(index);
-    return
-      Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+    return Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
       Radio<String>(
         value: location,
         groupValue: field.value,
@@ -88,7 +90,9 @@ class LocationCon extends ControllerMVC {
       ),
       Text(location),
       FlatButton(
-        onPressed: (){LocationCon().delete(location);},
+        onPressed: () {
+          LocationCon().delete(location);
+        },
         child: Icon(Icons.clear, color: Colors.grey),
       ),
     ]);

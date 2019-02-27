@@ -25,12 +25,12 @@ import 'package:flutter/material.dart';
 
 import 'package:mvc_application/mvc.dart' show StateMVC;
 
-import 'package:weathercast/src/controller.dart' show LocationCon;
-
-import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart' show LocationCon;
+import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart'
+    show LocationCon;
 
 List<DemoItem<dynamic>> weatherLocations(
     {StateMVC state, FormFieldSetter<String> onSaved}) {
+
   List<DemoItem<dynamic>> _demoItems = <DemoItem<dynamic>>[
     DemoItem<String>(
         name: 'Location',
