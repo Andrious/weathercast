@@ -25,9 +25,9 @@ import 'package:flutter/material.dart' show Colors, MaterialColor, ThemeData;
 
 import 'package:weathercast/src/model.dart' show WeatherCondition;
 
-import 'package:weathercast/src/controller.dart' show AppController;
+import 'package:weathercast/src/controller.dart' show ControllerMVC;
 
-class ThemeCon extends AppController {
+class ThemeCon extends ControllerMVC {
   static ThemeCon _this;
 
   static ThemeData get theme => _theme;
@@ -90,3 +90,6 @@ class ThemeCon extends AppController {
     return _this;
   }
 }
+
+
+
