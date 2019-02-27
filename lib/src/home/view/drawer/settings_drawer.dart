@@ -27,7 +27,7 @@ import 'package:weathercast/src/view.dart' show StateMVC, TemperatureUnits;
 import 'package:weathercast/src/controller.dart';
 
 import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart'
-    as loc show LocationCon, DemoItem;
+    show LocationCon, DemoItem;
 
 class SettingsDrawer extends StatefulWidget {
   SettingsDrawer({this.con, Key key}) : super(key: key);
@@ -37,15 +37,15 @@ class SettingsDrawer extends StatefulWidget {
 }
 
 class _SettingsDrawerState extends StateMVC<SettingsDrawer> {
-  _SettingsDrawerState() : super(loc.LocationCon());
-  List<loc.DemoItem<dynamic>> _demoItems;
+  _SettingsDrawerState() : super(LocationCon());
+  List<DemoItem<dynamic>> _demoItems;
   double _discreteValue = LocationTimer.intervals.toDouble();
 
   @override
   void initState() {
     super.initState();
     LocationTimer.initState();
-    _demoItems = loc.LocationCon().listLocations(
+    _demoItems = LocationCon().listLocations(
         state: this,
         onSaved: (String v) {
           WeatherCon().getWeather(v);
@@ -98,7 +98,7 @@ class _SettingsDrawerState extends StateMVC<SettingsDrawer> {
                         _demoItems[index].isExpanded = !isExpanded;
                       });
                     },
-                    children: _demoItems.map((loc.DemoItem<dynamic> item) {
+                    children: _demoItems.map((DemoItem<dynamic> item) {
                       return ExpansionPanel(
                           isExpanded: item.isExpanded,
                           headerBuilder: item.headerBuilder,
