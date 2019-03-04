@@ -17,4 +17,5 @@
 ## [0.5.3] - 2019-02-25: main directory renamed home
 ## [0.5.4] - 2019-02-25: renamed file to home.dart
 ## [0.5.5] - 2019-02-26: mod.Weather to Weather  factory WeatherApp(){
+## [0.5.6] - 2019-03-04: directory renamed from secondary to child
 ##
