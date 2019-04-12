@@ -1,3 +1,7 @@
+## 0.6.0
+ 2019-04-12
+- Update codebase 
+
 ## 0.5.7
  2019-03-06:
 - Comment out keystore reference in build.gradle
