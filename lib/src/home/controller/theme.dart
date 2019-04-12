@@ -37,7 +37,7 @@ class ThemeCon extends ControllerMVC {
   static MaterialColor _color;
 
   factory ThemeCon() {
-    if (_this == null) _this = ThemeCon._();
+    _this ??= ThemeCon._();
 
     return _this;
   }

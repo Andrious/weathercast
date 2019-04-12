@@ -23,10 +23,9 @@
 
 import 'package:flutter/material.dart' show runApp;
 
-import 'package:mvc_application/app.dart' show App;
-
 import 'package:weathercast/src/view.dart' show WeatherApp;
 
+import 'package:weathercast/src/controller.dart' show App;
 
 void main() => runApp(App(WeatherApp()));
 

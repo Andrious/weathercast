@@ -23,16 +23,14 @@
 
 import 'package:flutter/material.dart' show ThemeData;
 
-import 'package:mvc_application/mvc.dart' show AppView;
-
-import 'package:weathercast/src/view.dart' show Weather;
+import 'package:weathercast/src/view.dart' show AppView, Weather;
 
 import 'package:weathercast/src/controller.dart' as con;
 
 class WeatherApp extends AppView {
 
   factory WeatherApp(){
-    if(_this == null) _this = WeatherApp._();
+    _this ??= WeatherApp._();
     return _this;
   }
   static WeatherApp _this;

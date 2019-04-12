@@ -26,7 +26,7 @@ import 'package:weathercast/src/view.dart'
 
 class Settings {
   factory Settings() {
-    if (_this == null) _this = Settings._();
+    _this ??= Settings._();
     return _this;
   }
   static Settings _this;

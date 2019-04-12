@@ -23,7 +23,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:mvc_application/mvc.dart' show StateMVC;
+import 'package:weathercast/src/view.dart' show StateMVC;
 
 import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart'
     show LocationCon;

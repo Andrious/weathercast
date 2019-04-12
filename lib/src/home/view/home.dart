@@ -25,8 +25,6 @@ import 'dart:async' show Completer, Future;
 
 import 'package:flutter/material.dart';
 
-import 'package:mvc_application/mvc.dart' show StateMVC;
-
 import 'package:weathercast/src/model.dart' as model;
 
 import 'package:weathercast/src/view.dart'

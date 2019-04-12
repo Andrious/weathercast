@@ -21,7 +21,9 @@
 ///
 ///
 
-export 'package:mvc_application/mvc.dart' show StateMVC;
+export 'package:mxc_application/mvc.dart' show StateMVC;
+
+export 'package:mxc_application/mvc.dart' show AppView;
 
 export 'package:weathercast/src/app/view/weatherapp.dart';
 

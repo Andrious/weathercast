@@ -28,7 +28,7 @@ import 'dart:async' show Future, Timer;
 
 import 'package:flutter/material.dart';
 
-import 'package:mvc_application/mvc.dart' show StateMVC;
+import 'package:weathercast/src/view.dart' show StateMVC;
 
 import 'package:weathercast/src/controller.dart'
     show ControllerMVC, Prefs, WeatherCon;
@@ -39,9 +39,7 @@ import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart'
 /// Weather forecast locations controller.
 class LocationCon extends ControllerMVC {
   factory LocationCon() {
-    if (_this == null) {
-      _this = LocationCon._();
-    }
+    _this ??= LocationCon._();
     return _this;
   }
   // Make only one instance of this class.

@@ -29,7 +29,7 @@ import 'package:weathercast/src/home/view/drawer/weather_locations/mvc.dart'
 
 class WeatherApp extends AppController {
   factory WeatherApp() {
-    if (_this == null) _this = WeatherApp._();
+    _this ??= WeatherApp._();
     return _this;
   }
   static WeatherApp _this;

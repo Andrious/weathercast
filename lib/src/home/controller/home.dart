@@ -34,10 +34,7 @@ class WeatherCon extends ControllerMVC {
   static WeatherCon _this;
 
   factory WeatherCon() {
-    if (_this == null) {
-      _this = WeatherCon._();
-    }
-
+    _this ??= WeatherCon._();
     return _this;
   }
   WeatherCon._();

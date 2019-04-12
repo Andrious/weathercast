@@ -21,15 +21,11 @@
 ///
 ///
 
-import 'package:mvc_application/mvc.dart' show DBInterface, Database, Prefs;
-
-import 'package:sqflite/sqflite.dart' show Database;
-
-import 'package:dbutils/sqllitedb.dart' show DBInterface;
+import 'package:weathercast/src/controller.dart';
 
 class LocationMod extends DBInterface {
   factory LocationMod() {
-    if (_this == null) _this = LocationMod._();
+    _this ??= LocationMod._();
     return _this;
   }
   // Make only one instance of this class.
