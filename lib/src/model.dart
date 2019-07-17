@@ -21,9 +21,8 @@
 ///
 ///
 
+export 'package:mvc_application/model.dart';
+
 export 'package:weathercast/src/home/model/weather_model.dart';
 
 export 'package:weathercast/src/home/model/repositories/weather_api_client.dart';
-
-
-

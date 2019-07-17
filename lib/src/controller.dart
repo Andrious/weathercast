@@ -21,8 +21,6 @@
 ///
 ///
 
-export 'package:mvc_application/mvc.dart' show DBInterface, Database, Prefs;
-
 export 'package:mvc_application/controller.dart';
 
 export 'package:weathercast/src/app/controller/weatherapp.dart';

@@ -21,7 +21,7 @@
 ///
 ///
 
-import 'package:weathercast/src/controller.dart';
+import 'package:weathercast/src/model.dart';
 
 class LocationMod extends DBInterface {
   factory LocationMod() {

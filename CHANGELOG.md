@@ -1,3 +1,7 @@
+## 1.0.1
+ July 17, 2019
+- Removed 'package:mvc_application/mvc.dart'
+
 ## 1.0.0
  July 17, 2019
 - Migrated to MVC design pattern in mvc_application Dart Package.
