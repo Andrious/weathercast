@@ -26,10 +26,6 @@
 -dontwarn com.google.common.cache.**
 -dontwarn com.google.common.primitives.UnsignedBytes$**
 
-#Proguard can rename the `BuildConfig` Java class in the minification process
-# and prevent React Native Config from referencing it. To avoid this:
--keep class com.gtfp.workingmemory.BuildConfig { *; }
-
 ## Try a little more passes for kicks.
 -optimizationpasses 5
 

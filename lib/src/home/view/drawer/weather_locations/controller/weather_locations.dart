@@ -127,7 +127,7 @@ class LocationTimer {
   /// Called in the App's init() function.
   static Future<bool> init() async {
     _index = LocationCon._locations.indexOf(LocationCon.value);
-    int seconds = Prefs.getInt('intervals');
+    int seconds = await Prefs.getIntF('intervals');
     setTimer(seconds: seconds);
     return Future.value(true);
   }

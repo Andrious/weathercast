@@ -21,27 +21,23 @@
 ///
 ///
 
-import 'package:flutter/material.dart' show ThemeData;
+import 'package:flutter/material.dart' show Colors, ThemeData;
 
 import 'package:weathercast/src/view.dart' show AppView, Weather;
 
 import 'package:weathercast/src/controller.dart' as con;
 
 class WeatherApp extends AppView {
-
-  factory WeatherApp(){
-    _this ??= WeatherApp._();
-    return _this;
-  }
-  static WeatherApp _this;
-
-  WeatherApp._()
+  WeatherApp()
       : super(
-            title: 'Flutter Demo',
-            con: con.WeatherApp(),
-            home: Weather(),
-            );
+          title: 'Flutter Demo',
+          con: con.WeatherApp(),
+          home: Weather(),
+          theme: ThemeData(
+            primarySwatch: Colors.purple,
+            accentColor: Colors.orangeAccent[400],
+          ),
+        );
   @override
   ThemeData onTheme() => con.ThemeCon.theme;
 }
-

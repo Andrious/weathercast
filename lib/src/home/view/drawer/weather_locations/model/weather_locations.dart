@@ -73,7 +73,8 @@ class LocationMod extends DBInterface {
     if (city == null || city.isEmpty) return saved;
     _city = city;
     if (!_locations.contains(city)) {
-      saved = await LocationMod().saveMap(tableName, {'city': city});
+      Map<String, dynamic> rec = await LocationMod().saveMap(tableName, {'city': city});
+      saved = rec.isNotEmpty;
       if (saved) _locations.add(city);
     }
     return saved;

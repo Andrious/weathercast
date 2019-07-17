@@ -23,10 +23,13 @@
 
 import 'package:flutter/material.dart' show runApp;
 
-import 'package:weathercast/src/view.dart' show WeatherApp;
+import 'package:weathercast/src/view.dart' show App, WeatherApp;
 
-import 'package:weathercast/src/controller.dart' show App;
+void main() => runApp(MyApp());
 
-void main() => runApp(App(WeatherApp()));
+class MyApp extends App{
+  @override
+  createView() => WeatherApp();
+}
 
 
