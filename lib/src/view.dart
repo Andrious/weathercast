@@ -25,11 +25,11 @@ export 'package:mvc_application/view.dart';
 
 export 'package:weathercast/src/app/view/weatherapp.dart';
 
-export 'package:weathercast/src/app/view/location.dart';
-
 export 'package:weathercast/src/app/view/utils/gradient_container.dart';
 
 export 'package:weathercast/src/home/view/home.dart';
+
+export 'package:weathercast/src/home/view/location.dart';
 
 export 'package:weathercast/src/home/view/drawer/settings_drawer.dart';
 

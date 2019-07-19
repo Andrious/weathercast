@@ -1,3 +1,7 @@
+## 1.0.2
+ July 18, 2019
+- Moved location.dart to home/ directory.
+
 ## 1.0.1
  July 17, 2019
 - Removed 'package:mvc_application/mvc.dart'
