@@ -1,7 +1,7 @@
 name: weathercast
 description: A simple Weather App demonstrating Flutter
 
-version: 1.0.2
+version: 1.0.3
 
 environment:
   sdk: ">=2.1.0<3.0.0"
@@ -10,11 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-#  mxc_application:
-#    path: ../../packages/mxc_application
-  mvc_application:
-    git:
-      url: git://github.com/AndriousSolutions/mvc_application.git
+  mvc_application: ^1.0.3
+#    git:
+#      url: git://github.com/AndriousSolutions/mvc_application.git
 
   http:
     #^0.12.0
