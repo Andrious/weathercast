@@ -21,6 +21,8 @@
 ///
 ///
 
+export 'package:sqflite/sqflite.dart';
+
 export 'package:mvc_application/model.dart';
 
 export 'package:weathercast/src/home/model/weather_model.dart';
