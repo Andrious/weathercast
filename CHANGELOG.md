@@ -1,3 +1,8 @@
+## 1.0.3
+ July 21, 2019
+- Add export 'package:sqflite/sqflite.dart'; to  src/model.dart
+- Add mvc_application: ^1.0.3 to pubspec.yaml
+
 ## 1.0.2
  July 18, 2019
 - Moved location.dart to home/ directory.
