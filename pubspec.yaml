@@ -4,25 +4,25 @@ description: A simple Weather App demonstrating Flutter
 version: 1.0.3
 
 environment:
-  sdk: ">=2.1.0<3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  mvc_application: ^1.0.3
-#    git:
+  mvc_application: ^1.0.0
+#    path: ../../packages/mvc_application
+  #    git:
 #      url: git://github.com/AndriousSolutions/mvc_application.git
 
+  # https://pub.dev/packages/http
   http:
-    #^0.12.0
 
+  # https://pub.dev/packages/equatable
   equatable:
-    #^0.1.0
 
-  ads: #^0.4.2
-
-  #firebase_admob: ^0.9.0+1
+  # https://pub.dev/packages/ads
+  ads: ^1.0.0
 
 dev_dependencies:
   flutter_test:

@@ -100,7 +100,7 @@ class LocationCon extends ControllerMVC {
   Future<bool> save(String value) => LocationMod.saveLocation(city: value);
 
   Future<bool> delete(String value) async {
-    bool delete = await LocationMod.deleteRec(value);
+    bool delete = await LocationMod.deleteCity(value);
     refresh();
     return delete;
   }

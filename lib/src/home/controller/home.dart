@@ -28,7 +28,14 @@ import 'package:weathercast/src/model.dart' show Weather;
 import 'package:weathercast/src/view.dart' show Switcher;
 
 import 'package:weathercast/src/controller.dart'
-    show ControllerMVC, LocationCon, LocationTimer, Prefs, Settings, ThemeCon, WeatherRepository;
+    show
+        ControllerMVC,
+        LocationCon,
+        LocationTimer,
+        Prefs,
+        Settings,
+        ThemeCon,
+        WeatherRepository;
 
 class WeatherCon extends ControllerMVC {
   static WeatherCon _this;

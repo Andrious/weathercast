@@ -23,7 +23,7 @@
 
 import 'package:weathercast/src/model.dart';
 
-class LocationMod extends DBInterface {
+class LocationMod extends SQLiteDB {
   factory LocationMod() {
     _this ??= LocationMod._();
     return _this;
@@ -92,7 +92,7 @@ class LocationMod extends DBInterface {
     return recs;
   }
 
-  static Future<bool> deleteRec(String city) async {
+  static Future<bool> deleteCity(String city) async {
     List<Map<String, dynamic>> recs = await getRecs();
     int id = -1;
     for (Map<String, dynamic> rec in recs) {

@@ -1,3 +1,11 @@
+## 1.1.0
+ March 23, 2020
+- sdk: ">=2.6.0 <3.0.0"
+- compileSdkVersion 28
+- androidx
+- multiDexEnabled true
+- class LocationMod extends SQLiteDB
+
 ## 1.0.3
  July 21, 2019
 - Add export 'package:sqflite/sqflite.dart'; to  src/model.dart

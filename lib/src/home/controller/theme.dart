@@ -28,20 +28,15 @@ import 'package:weathercast/src/model.dart' show WeatherCondition;
 import 'package:weathercast/src/controller.dart' show ControllerMVC;
 
 class ThemeCon extends ControllerMVC {
-  static ThemeCon _this;
+  factory ThemeCon() => _this;
+  static final ThemeCon _this = ThemeCon._();
+  ThemeCon._();
 
   static ThemeData get theme => _theme;
   static ThemeData _theme;
 
   static MaterialColor get color => _color;
   static MaterialColor _color;
-
-  factory ThemeCon() {
-    _this ??= ThemeCon._();
-
-    return _this;
-  }
-  ThemeCon._();
 
   static ThemeCon weatherChanged({WeatherCondition condition}) {
     switch (condition) {

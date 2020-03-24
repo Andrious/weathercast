@@ -61,8 +61,7 @@ List<DemoItem<dynamic>> weatherLocations(
                     if (onSaved != null) onSaved(result);
                   },
                   builder: (FormFieldState<String> field) {
-                    return Column(mainAxisSize: MainAxisSize.min, children: <
-                        Widget>[
+                    return Column(mainAxisSize: MainAxisSize.min, children:[
                       Flexible(
                           flex: 1,
                           fit: FlexFit.loose,
